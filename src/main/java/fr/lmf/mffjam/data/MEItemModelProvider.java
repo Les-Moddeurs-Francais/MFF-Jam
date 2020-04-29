@@ -1,6 +1,7 @@
 package fr.lmf.mffjam.data;
 
 import fr.lmf.mffjam.data.item.MEItemBuilder;
+import fr.lmf.mffjam.init.ItemInit;
 import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ public class MEItemModelProvider extends ModelProvider<ItemModelBuilder>
 	@Override
 	protected void registerModels()
 	{
-
+		layer0(ItemInit.PLAYER_SLING.get());
 	}
 
 	@Override
