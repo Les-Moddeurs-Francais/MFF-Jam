@@ -1,11 +1,14 @@
 package fr.lmf.mffjam;
 
+import fr.lmf.mffjam.event.FallingEvent;
 import fr.lmf.mffjam.init.BlockInit;
 import fr.lmf.mffjam.init.EntityInit;
 import fr.lmf.mffjam.init.ItemInit;
 import fr.lmf.mffjam.init.TileEntityInit;
 import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +25,15 @@ public class MoreExploration
 {
 	private static final Logger LOGGER = LogManager.getLogger();
 
+	public static final ItemGroup me_group = new ItemGroup("me_group")
+	{
+		@Override
+		public ItemStack createIcon()
+		{
+			return new ItemStack(ItemInit.PLAYER_SLING.get());
+		}
+	};
+
 	public MoreExploration()
 	{
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -37,6 +49,7 @@ public class MoreExploration
 		EntityInit.REGISTRY.register(bus);
 
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new FallingEvent());
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
