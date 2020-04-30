@@ -19,7 +19,10 @@ public class MEItemModelProvider extends ModelProvider<ItemModelBuilder>
 	@Override
 	protected void registerModels()
 	{
-		layer0(ItemInit.PLAYER_SLING.get());
+		layer0(ItemInit.ORANGE.get());
+		layer0(ItemInit.PEAR.get());
+		layer0(ItemInit.CHERRY.get());
+		layer0(ItemInit.CLEMENTINE.get());
 	}
 
 	@Override

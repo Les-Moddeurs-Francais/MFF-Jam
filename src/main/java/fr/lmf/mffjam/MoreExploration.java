@@ -3,9 +3,13 @@ package fr.lmf.mffjam;
 import fr.lmf.mffjam.event.FallingEvent;
 import fr.lmf.mffjam.init.*;
 import fr.lmf.mffjam.utils.Utils;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -47,12 +51,14 @@ public class MoreExploration
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new FallingEvent());
+		MinecraftForge.EVENT_BUS.register(new StructureInit());
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
 	{
 		LOGGER.info("HELLO FROM PREINIT");
-		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+		Biomes.BIRCH_FOREST.addStructure(StructureInit.illagerTower.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+		Biomes.BIRCH_FOREST.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, StructureInit.illagerTower.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event)

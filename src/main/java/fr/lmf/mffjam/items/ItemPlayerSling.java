@@ -62,6 +62,7 @@ public class ItemPlayerSling extends Item
 
 		System.out.println(lookVec);
 		player.addVelocity(lookVec.x * -force * charge, lookVec.y / (4f / charge) * -force, lookVec.z * -force * charge);
+		stack.damageItem(1, player, h -> player.sendBreakAnimation(player.getActiveHand()));
 		player.getPersistentData().putBoolean("using_sling", true);
 		if( worldIn.isRemote )
 		{
