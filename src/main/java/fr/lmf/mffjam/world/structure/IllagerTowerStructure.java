@@ -1,25 +1,27 @@
 package fr.lmf.mffjam.world.structure;
 
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.entity.EntityType;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeManager;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
-import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
 public class IllagerTowerStructure extends ScatteredStructure<NoFeatureConfig> {
-    private static final List<Biome.SpawnListEntry> PILLAGE_OUTPOST_ENEMIES;
+
+    private static final int FEATURE_DISTANCE = 31;
+    private static final int FEATURE_SEPARATION = 8;
 
     public IllagerTowerStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i51470_1_) {
         super(p_i51470_1_);
@@ -33,25 +35,40 @@ public class IllagerTowerStructure extends ScatteredStructure<NoFeatureConfig> {
         return 3;
     }
 
-    public List<Biome.SpawnListEntry> getSpawnList() {
-        return PILLAGE_OUTPOST_ENEMIES;
+
+    @Override
+    protected ChunkPos getStartPositionForPosition(ChunkGenerator<?> generator, Random random, int chunkX, int chunkZ, int offsetX, int offsetZ) {
+        int lvt_9_1_ = chunkX + FEATURE_DISTANCE * offsetX;
+        int lvt_10_1_ = chunkZ + FEATURE_DISTANCE * offsetZ;
+        int lvt_11_1_ = lvt_9_1_ < 0 ? lvt_9_1_ - FEATURE_DISTANCE + 1 : lvt_9_1_;
+        int lvt_12_1_ = lvt_10_1_ < 0 ? lvt_10_1_ - FEATURE_DISTANCE + 1 : lvt_10_1_;
+        int lvt_13_1_ = lvt_11_1_ / FEATURE_DISTANCE;
+        int lvt_14_1_ = lvt_12_1_ / FEATURE_DISTANCE;
+        ((SharedSeedRandom)random).setLargeFeatureSeedWithSalt(generator.getSeed(), lvt_13_1_, lvt_14_1_, 10387312);
+        lvt_13_1_ *= FEATURE_DISTANCE;
+        lvt_14_1_ *= FEATURE_DISTANCE;
+        lvt_13_1_ += random.nextInt(FEATURE_DISTANCE - FEATURE_SEPARATION);
+        lvt_14_1_ += random.nextInt(FEATURE_DISTANCE - FEATURE_SEPARATION);
+        return new ChunkPos(lvt_13_1_, lvt_14_1_);
     }
 
+
+    @Override
     public boolean func_225558_a_(BiomeManager p_225558_1_, ChunkGenerator<?> p_225558_2_, Random p_225558_3_, int p_225558_4_, int p_225558_5_, Biome p_225558_6_) {
-        ChunkPos lvt_7_1_ = this.getStartPositionForPosition(p_225558_2_, p_225558_3_, p_225558_4_, p_225558_5_, 0, 0);
-        if (p_225558_4_ == lvt_7_1_.x && p_225558_5_ == lvt_7_1_.z) {
-            int lvt_8_1_ = p_225558_4_ >> 4;
-            int lvt_9_1_ = p_225558_5_ >> 4;
-            p_225558_3_.setSeed((long)(lvt_8_1_ ^ lvt_9_1_ << 4) ^ p_225558_2_.getSeed());
+        ChunkPos chunkpos = this.getStartPositionForPosition(p_225558_2_, p_225558_3_, p_225558_4_, p_225558_5_, 0, 0);
+        if (p_225558_4_ == chunkpos.x && p_225558_5_ == chunkpos.z) {
+            int i = p_225558_4_ >> 4;
+            int j = p_225558_5_ >> 4;
+            p_225558_3_.setSeed((long)(i ^ j << 4) ^ p_225558_2_.getSeed());
             p_225558_3_.nextInt();
             if (p_225558_3_.nextInt(5) != 0) {
                 return false;
             }
 
             if (p_225558_2_.hasStructure(p_225558_6_, this)) {
-                for(int lvt_10_1_ = p_225558_4_ - 10; lvt_10_1_ <= p_225558_4_ + 10; ++lvt_10_1_) {
-                    for(int lvt_11_1_ = p_225558_5_ - 10; lvt_11_1_ <= p_225558_5_ + 10; ++lvt_11_1_) {
-                        if (Feature.VILLAGE.func_225558_a_(p_225558_1_, p_225558_2_, p_225558_3_, lvt_10_1_, lvt_11_1_, p_225558_1_.getBiome(new BlockPos((lvt_10_1_ << 4) + 9, 0, (lvt_11_1_ << 4) + 9)))) {
+                for(int k = p_225558_4_ - 10; k <= p_225558_4_ + 10; ++k) {
+                    for(int l = p_225558_5_ - 10; l <= p_225558_5_ + 10; ++l) {
+                        if (Feature.VILLAGE.func_225558_a_(p_225558_1_, p_225558_2_, p_225558_3_, k, l, p_225558_1_.getBiome(new BlockPos((k << 4) + 9, 0, (l << 4) + 9)))) {
                             return false;
                         }
                     }
@@ -70,10 +87,6 @@ public class IllagerTowerStructure extends ScatteredStructure<NoFeatureConfig> {
 
     protected int getSeedModifier() {
         return 165745296;
-    }
-
-    static {
-        PILLAGE_OUTPOST_ENEMIES = Lists.newArrayList(new Biome.SpawnListEntry[]{new Biome.SpawnListEntry(EntityType.PILLAGER, 1, 1, 1)});
     }
 
     public static class Start extends MarginedStructureStart {

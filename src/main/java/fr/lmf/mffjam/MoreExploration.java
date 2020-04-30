@@ -1,10 +1,7 @@
 package fr.lmf.mffjam;
 
 import fr.lmf.mffjam.event.FallingEvent;
-import fr.lmf.mffjam.init.BlockInit;
-import fr.lmf.mffjam.init.EntityInit;
-import fr.lmf.mffjam.init.ItemInit;
-import fr.lmf.mffjam.init.TileEntityInit;
+import fr.lmf.mffjam.init.*;
 import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
