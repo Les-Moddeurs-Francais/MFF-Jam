@@ -2,8 +2,8 @@ package fr.lmf.mffjam.world.structure;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import fr.lmf.mffjam.Main;
 import fr.lmf.mffjam.init.StructurePieceInit;
+import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -11,12 +11,13 @@ import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.jigsaw.*;
+import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
+import net.minecraft.world.gen.feature.jigsaw.JigsawPattern;
+import net.minecraft.world.gen.feature.jigsaw.JigsawPiece;
+import net.minecraft.world.gen.feature.jigsaw.SingleJigsawPiece;
 import net.minecraft.world.gen.feature.structure.AbstractVillagePiece;
-import net.minecraft.world.gen.feature.structure.IStructurePieceType;
 import net.minecraft.world.gen.feature.structure.PillagerOutpostPieces;
 import net.minecraft.world.gen.feature.structure.StructurePiece;
-import net.minecraft.world.gen.feature.template.IntegrityProcessor;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
 import java.util.List;
@@ -26,10 +27,11 @@ public class IllagerTowerPieces {
         JigsawManager.func_214889_a(new ResourceLocation("illager_tower/base_plate"), 7, PillagerOutpostPieces.PillageOutpost::new, p_215139_0_, p_215139_1_, p_215139_2_, p_215139_3_, p_215139_4_);
     }
 
-    static {
-        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/base_plate"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Main.MODID,"illager_tower/base_plate").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
-        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/towers"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Main.MODID,"illager_tower/illager_tower").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
-        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/illager"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Main.MODID,"illager_tower/illager").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+    static
+    {
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/base_plate"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Utils.MODID, "illager_tower/base_plate").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/towers"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Utils.MODID, "illager_tower/illager_tower").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
+        JigsawManager.REGISTRY.register(new JigsawPattern(new ResourceLocation("illager_tower/illager"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(new SingleJigsawPiece(new ResourceLocation(Utils.MODID, "illager_tower/illager").toString()), 1)), JigsawPattern.PlacementBehaviour.RIGID));
     }
 
     public static class IllagerTower extends AbstractVillagePiece {
