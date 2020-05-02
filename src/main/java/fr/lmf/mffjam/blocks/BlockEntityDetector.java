@@ -2,6 +2,7 @@ package fr.lmf.mffjam.blocks;
 
 import fr.lmf.mffjam.tileentity.TileEntityEntityDetector;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -43,6 +44,12 @@ public class BlockEntityDetector extends Block
 	public boolean hasTileEntity(BlockState state)
 	{
 		return true;
+	}
+
+	@Override
+	public BlockRenderType getRenderType(BlockState state)
+	{
+		return BlockRenderType.MODEL;
 	}
 
 	@Override

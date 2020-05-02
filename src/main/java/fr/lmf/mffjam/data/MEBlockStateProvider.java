@@ -68,6 +68,7 @@ public class MEBlockStateProvider extends BlockStateProvider
 	@Override
 	protected void registerStatesAndModels()
 	{
+
 	}
 
 }
