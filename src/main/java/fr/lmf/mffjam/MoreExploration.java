@@ -61,6 +61,9 @@ public class MoreExploration
 		LOGGER.info("HELLO FROM PREINIT");
 		Biomes.BIRCH_FOREST.addStructure(StructureInit.illagerTower.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
 		Biomes.BIRCH_FOREST.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, StructureInit.illagerTower.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+
+		Biomes.PLAINS.addStructure(StructureInit.villagerCamp.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+		Biomes.PLAINS.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, StructureInit.villagerCamp.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event)

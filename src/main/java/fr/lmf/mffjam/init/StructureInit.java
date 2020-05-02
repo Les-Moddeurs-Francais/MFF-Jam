@@ -2,6 +2,7 @@ package fr.lmf.mffjam.init;
 
 import fr.lmf.mffjam.utils.Utils;
 import fr.lmf.mffjam.world.structure.IllagerTowerStructure;
+import fr.lmf.mffjam.world.structure.VillagerCampStructure;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.Structure;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 public class StructureInit {
 
     public static Structure<NoFeatureConfig> illagerTower = new IllagerTowerStructure(NoFeatureConfig::deserialize);
+    public static Structure<NoFeatureConfig> villagerCamp = new VillagerCampStructure(NoFeatureConfig::deserialize);
 
     @SubscribeEvent
     public static void registerFeature(final RegistryEvent.Register<Feature<?>> e)
@@ -21,7 +23,8 @@ public class StructureInit {
 
         e.getRegistry().registerAll(
 
-                illagerTower.setRegistryName("illager_tower")
+                illagerTower.setRegistryName("illager_tower"),
+                villagerCamp.setRegistryName("villager_camp")
 
         );
 
