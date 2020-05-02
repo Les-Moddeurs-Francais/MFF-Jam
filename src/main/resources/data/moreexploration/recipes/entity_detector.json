@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CBC",
+    "ROR",
+    "CEC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "E": {
+      "item": "minecraft:spider_eye"
+    },
+    "O": {
+      "item": "minecraft:comparator"
+    }
+  },
+  "result": {
+    "item": "moreexploration:entity_detector"
+  }
+}
