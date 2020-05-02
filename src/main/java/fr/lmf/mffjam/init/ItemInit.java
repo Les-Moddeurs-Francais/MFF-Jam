@@ -15,7 +15,6 @@ public class ItemInit
 	public static final DeferredRegister<Item> REGISTRY = new DeferredRegister<>(ForgeRegistries.ITEMS, Utils.MODID);
 
 	public static final RegistryObject<Item> PLAYER_SLING = REGISTRY.register("player_sling", ItemPlayerSling::new);
-	public static final RegistryObject<Item> GRAPPLE = REGISTRY.register("grapple", ItemGrapple::new);
 
 	public static final RegistryObject<Item> ORANGE = REGISTRY.register("orange", () -> new MEItemFood(3, 0.5f));
 	public static final RegistryObject<Item> PEAR = REGISTRY.register("pear", () -> new MEItemFood(2, 0.25f));
