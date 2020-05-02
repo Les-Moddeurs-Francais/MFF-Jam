@@ -80,7 +80,7 @@
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "minecraft:diamond"
+          "name": "minecraft:gold_ingot"
         },
         {
           "type": "minecraft:item",
