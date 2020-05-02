@@ -1,6 +1,7 @@
 package fr.lmf.mffjam.data;
 
 import fr.lmf.mffjam.init.BlockInit;
+import fr.lmf.mffjam.init.ItemInit;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Blocks;
@@ -55,6 +56,15 @@ public class MERecipesProvider extends RecipeProvider
 				.patternLine("LSL")
 				.patternLine(" L ")
 				.addCriterion("obtention", InventoryChangeTrigger.Instance.forItems(ItemPredicate.Builder.create().tag(ItemTags.LEAVES).build()))
+				.build(consumer);
+
+		ShapedRecipeBuilder.shapedRecipe(ItemInit.PLAYER_SLING.get())
+				.key('S', Items.STRING)
+				.key('L', Items.LEAD)
+				.patternLine("S S")
+				.patternLine(" S ")
+				.patternLine(" L ")
+				.addCriterion("obtention", InventoryChangeTrigger.Instance.forItems(Items.LEAD))
 				.build(consumer);
 
 	}

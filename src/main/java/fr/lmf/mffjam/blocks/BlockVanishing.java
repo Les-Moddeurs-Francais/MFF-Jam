@@ -34,7 +34,7 @@ public class BlockVanishing extends Block
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
-		return state.get(ACTIVATED) ? BlockRenderType.MODEL : BlockRenderType.MODEL;
+		return BlockRenderType.MODEL;
 	}
 
 
