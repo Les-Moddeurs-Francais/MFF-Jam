@@ -1,6 +1,7 @@
 package fr.lmf.mffjam.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -26,6 +27,12 @@ public class BlockVanishing extends Block
 	{
 		super(Block.Properties.create(Material.ROCK).harvestLevel(1).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).hardnessAndResistance(5.0f, 20.f));
 		this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVATED, false));
+	}
+
+	@Override
+	public BlockRenderType getRenderType(BlockState state)
+	{
+		return state.get(ACTIVATED) ? BlockRenderType.INVISIBLE : BlockRenderType.MODEL;
 	}
 
 	@Override
