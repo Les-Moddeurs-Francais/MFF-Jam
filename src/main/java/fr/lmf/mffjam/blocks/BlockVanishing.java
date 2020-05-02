@@ -14,6 +14,8 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
@@ -25,14 +27,34 @@ public class BlockVanishing extends Block
 
 	public BlockVanishing()
 	{
-		super(Block.Properties.create(Material.ROCK).harvestLevel(1).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).hardnessAndResistance(5.0f, 20.f));
+		super(Block.Properties.create(Material.ROCK).notSolid().harvestLevel(1).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).hardnessAndResistance(5.0f, 20.f));
 		this.setDefaultState(this.stateContainer.getBaseState().with(ACTIVATED, false));
 	}
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
-		return state.get(ACTIVATED) ? BlockRenderType.INVISIBLE : BlockRenderType.MODEL;
+		return state.get(ACTIVATED) ? BlockRenderType.MODEL : BlockRenderType.MODEL;
+	}
+
+
+	@Override
+	public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos)
+	{
+		return true;
+	}
+
+
+	@OnlyIn(Dist.CLIENT)
+	public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side)
+	{
+
+		if( !state.get(ACTIVATED) )
+		{
+			return false;
+		}
+
+		return side != Direction.DOWN;
 	}
 
 	@Override
@@ -70,6 +92,7 @@ public class BlockVanishing extends Block
 			worldIn.setBlockState(pos, state.with(ACTIVATED, false));
 		}
 	}
+
 
 	@Override
 	public boolean canConnectRedstone(BlockState state, IBlockReader world, BlockPos pos, @Nullable Direction side)

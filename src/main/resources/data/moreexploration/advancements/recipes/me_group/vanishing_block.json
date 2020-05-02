@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "moreexploration:vanishing_block"
+    ]
+  },
+  "criteria": {
+    "obtention": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:leaves"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "moreexploration:vanishing_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtention",
+      "has_the_recipe"
+    ]
+  ]
+}
