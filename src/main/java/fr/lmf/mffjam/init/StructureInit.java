@@ -11,6 +11,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Locale;
+
 @Mod.EventBusSubscriber(modid = Utils.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class StructureInit {
 
@@ -27,8 +29,6 @@ public class StructureInit {
                 villagerCamp.setRegistryName("villager_camp")
 
         );
-
-
 
     }
 

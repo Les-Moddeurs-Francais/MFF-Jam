@@ -1,5 +1,6 @@
 package fr.lmf.mffjam;
 
+import com.google.common.collect.ImmutableList;
 import fr.lmf.mffjam.event.FallingEvent;
 import fr.lmf.mffjam.event.MELootTablesEvent;
 import fr.lmf.mffjam.init.*;
@@ -13,6 +14,7 @@ import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -60,6 +62,7 @@ public class MoreExploration
 		MinecraftForge.EVENT_BUS.register(new MELootTablesEvent());
 		MinecraftForge.EVENT_BUS.register(new StructureInit());
 		MinecraftForge.EVENT_BUS.register(new ClientEvent());
+
 
 
 	}
