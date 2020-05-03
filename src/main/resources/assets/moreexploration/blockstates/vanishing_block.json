@@ -1,6 +1,10 @@
 {
   "variants": {
-    "activated=true": { "model": "moreexploration:block/vanishing_block" },
-    "activated=false": { "model": "moreexploration:block/vanishing_block" }
+    "activated=true": {
+      "model": "block/stone"
+    },
+    "activated=false": {
+      "model": "block/stone"
+    }
   }
 }

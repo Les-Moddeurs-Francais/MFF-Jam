@@ -1,20 +1,15 @@
 package fr.lmf.mffjam;
 
-import com.google.common.collect.ImmutableList;
 import fr.lmf.mffjam.event.FallingEvent;
 import fr.lmf.mffjam.event.MELootTablesEvent;
 import fr.lmf.mffjam.init.*;
 import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.FoliageColors;
-import net.minecraft.world.biome.BiomeColors;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
