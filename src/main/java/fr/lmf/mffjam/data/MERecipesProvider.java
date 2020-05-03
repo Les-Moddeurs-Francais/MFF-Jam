@@ -49,7 +49,7 @@ public class MERecipesProvider extends RecipeProvider
 
 		System.out.println(ItemTags.LEAVES.getAllElements());
 
-		ShapedRecipeBuilder.shapedRecipe(BlockInit.VANISHING_BLOCK.get())
+		ShapedRecipeBuilder.shapedRecipe(BlockInit.FAKE_LEAVES.get())
 				.key('L', ItemTags.LEAVES)
 				.key('S', Items.STRING)
 				.patternLine(" L ")
