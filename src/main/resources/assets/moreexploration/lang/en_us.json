@@ -8,6 +8,7 @@
   "item.moreexploration.clementine": "Clementine",
   "block.moreexploration.vanishing_block": "Vanishing Block",
   "block.moreexploration.fake_leaves": "Fake Leave",
-  "block.moreexploration.entity_detector": "Entity Detector"
+  "block.moreexploration.entity_detector": "Entity Detector",
+  "itemGroup.me_group": "More Exploration"
 
 }
