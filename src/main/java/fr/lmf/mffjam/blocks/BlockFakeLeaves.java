@@ -14,13 +14,14 @@ public class BlockFakeLeaves extends Block
 {
 	public BlockFakeLeaves()
 	{
-		super(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.5f, 10.f).sound(SoundType.GROUND).harvestLevel(0));
+		super(Block.Properties.create(Material.LEAVES).notSolid().hardnessAndResistance(0.5f, 10.f).sound(SoundType.PLANT).harvestLevel(0));
 	}
 
+
 	@Override
-	public boolean isTransparent(BlockState state)
+	public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos)
 	{
-		return true;
+		return 1;
 	}
 
 	@Override
