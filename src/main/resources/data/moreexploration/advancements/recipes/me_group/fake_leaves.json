@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "moreexploration:vanishing_block"
+      "moreexploration:fake_leaves"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "moreexploration:vanishing_block"
+        "recipe": "moreexploration:fake_leaves"
       }
     }
   },
