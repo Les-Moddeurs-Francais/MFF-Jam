@@ -47,8 +47,7 @@ public class BlockEntityDetector extends Block
 	}
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state)
-	{
+	public BlockRenderType getRenderType(BlockState p_149645_1_) {
 		return BlockRenderType.MODEL;
 	}
 

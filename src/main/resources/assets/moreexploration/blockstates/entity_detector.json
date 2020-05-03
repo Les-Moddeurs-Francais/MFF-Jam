@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "moreexploration:block/entity_detector" },
+    "facing=south,powered=false": { "model": "moreexploration:block/entity_detector", "y": 180 },
+    "facing=west,powered=false": { "model": "moreexploration:block/entity_detector", "y": 270 },
+    "facing=east,powered=false": { "model": "moreexploration:block/entity_detector", "y": 90 },
+    "facing=north,powered=true": { "model": "moreexploration:block/entity_detector_on" },
+    "facing=south,powered=true": { "model": "moreexploration:block/entity_detector_on", "y": 180 },
+    "facing=west,powered=true": { "model": "moreexploration:block/entity_detector_on", "y": 270 },
+    "facing=east,powered=true": { "model": "moreexploration:block/entity_detector_on", "y": 90 }
+  }
+}

@@ -4,8 +4,13 @@ import fr.lmf.mffjam.event.FallingEvent;
 import fr.lmf.mffjam.event.MELootTablesEvent;
 import fr.lmf.mffjam.init.*;
 import fr.lmf.mffjam.utils.Utils;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.FoliageColors;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
@@ -54,6 +59,9 @@ public class MoreExploration
 		MinecraftForge.EVENT_BUS.register(new FallingEvent());
 		MinecraftForge.EVENT_BUS.register(new MELootTablesEvent());
 		MinecraftForge.EVENT_BUS.register(new StructureInit());
+		MinecraftForge.EVENT_BUS.register(new ClientEvent());
+
+
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
@@ -69,6 +77,7 @@ public class MoreExploration
 	private void doClientStuff(final FMLClientSetupEvent event)
 	{
 		LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+		RenderTypeLookup.setRenderLayer(BlockInit.FAKE_LEAVES.get(), RenderType.getCutoutMipped());
 	}
 
 	private void enqueueIMC(final InterModEnqueueEvent event)
