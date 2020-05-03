@@ -1,6 +1,5 @@
 package fr.lmf.mffjam.init;
 
-import fr.lmf.mffjam.items.ItemGrapple;
 import fr.lmf.mffjam.items.ItemPlayerSling;
 import fr.lmf.mffjam.items.MEItemFood;
 import fr.lmf.mffjam.utils.Utils;

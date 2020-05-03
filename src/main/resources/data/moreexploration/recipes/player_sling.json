@@ -2,18 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "S S",
-    "B#B",
-    "B#B"
+    " S ",
+    " L "
   ],
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "B": {
-      "item": "minecraft:slime_ball"
-    },
     "S": {
       "item": "minecraft:string"
+    },
+    "L": {
+      "item": "minecraft:lead"
     }
   },
   "result": {

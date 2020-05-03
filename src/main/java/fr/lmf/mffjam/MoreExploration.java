@@ -1,6 +1,7 @@
 package fr.lmf.mffjam;
 
 import fr.lmf.mffjam.event.FallingEvent;
+import fr.lmf.mffjam.event.MELootTablesEvent;
 import fr.lmf.mffjam.init.*;
 import fr.lmf.mffjam.utils.Utils;
 import net.minecraft.item.ItemGroup;
@@ -51,6 +52,7 @@ public class MoreExploration
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new FallingEvent());
+		MinecraftForge.EVENT_BUS.register(new MELootTablesEvent());
 		MinecraftForge.EVENT_BUS.register(new StructureInit());
 	}
 
